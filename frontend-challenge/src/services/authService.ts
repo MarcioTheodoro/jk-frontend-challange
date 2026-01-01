@@ -1,7 +1,17 @@
 import axios from 'axios';
 
-const api = axios.create({
+export const api = axios.create({
   baseURL: 'http://localhost:3000',
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('token');
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
 });
 
 interface LoginResponse {
@@ -18,4 +28,8 @@ export async function login(email: string, password: string) {
   );
 
   return response.data;
+}
+
+export function logout() {
+  localStorage.removeItem('token');
 }
