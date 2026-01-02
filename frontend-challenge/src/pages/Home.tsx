@@ -9,6 +9,10 @@ export function Home() {
     logout();
     navigate('/login');
   }
+
+  function handleManager() {
+    navigate('/userlist');
+  }
   
 
   return (
@@ -27,6 +31,13 @@ export function Home() {
         onClick={handleLogout}
       >
         Logout
+      </Button>
+      <Button
+        variant="outlined"
+        style={{ marginTop: '2rem' , marginLeft: '2rem' }}
+        onClick={handleManager}
+      >
+        Gerenciador
       </Button>
     </Container>
   );

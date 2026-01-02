@@ -65,7 +65,6 @@ frontend-challenge/
 ├── tsconfig.json
 ├── package.json
 └── README.md
-
 ```
 
 ## 🚀 Como entregar
