@@ -8,10 +8,13 @@ import {
   TableCell,
   TableBody,
   CircularProgress,
-  Pagination
+  Pagination,
+  Button,
+  Stack
 } from '@mui/material';
 import { getUsers } from '../../services/UserService';
 import type { User } from '../../types/User';
+import { useNavigate } from 'react-router-dom';
 
 export function UserList() {
   const [users, setUsers] = useState<User[]>([]);
@@ -25,6 +28,8 @@ export function UserList() {
   const startIndex = (page - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
   const displayedUsers = users.slice(startIndex, endIndex);
+
+  const navigate = useNavigate();
 
   const handleChangePage = (_event: React.ChangeEvent<unknown>, newPage: number) => {
     setPage(newPage);
@@ -92,7 +97,19 @@ export function UserList() {
           onChange={handleChangePage}
           color="primary"
         />
-    </div>
+      </div>
+      <Stack spacing={2}>
+        <Button 
+          variant="contained" 
+          onClick={() => navigate('/users/create')}
+          style={{ marginTop: '2rem' }}
+        >
+          Novo Usuário
+        </Button>
+        <Button variant="contained" onClick={() => navigate('/home')}>
+          Voltar
+        </Button>
+      </Stack>
     </Container>
   );
 }

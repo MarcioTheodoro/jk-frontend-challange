@@ -6,3 +6,17 @@ export async function getUsers(): Promise<User[]> {
   return response.data;
 }
 
+interface CreateUserPayload {
+  email: string;
+  password: string;
+  type: string;
+  name?: string;
+  cpf?: string;
+  birthDate?: Date;
+  fantasyName?: string;
+}
+
+export async function createUser(data: CreateUserPayload) {
+  await api.post('/users', data);
+}
+

@@ -11,7 +11,7 @@ export function Home() {
   }
 
   function handleManager() {
-    navigate('/userlist');
+    navigate('/users');
   }
   
 

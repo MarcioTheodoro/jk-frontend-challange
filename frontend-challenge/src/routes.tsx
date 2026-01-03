@@ -3,6 +3,7 @@ import { Login } from './pages/Login';
 import { Home } from './pages/Home';
 import { PrivateRoute } from './components/PrivateRoute';
 import { UserList } from './pages/Users/UserList';
+import { UserCreate } from './pages/Users/UserCreate';
 
 export function AppRoutes() {
   return (
@@ -13,7 +14,8 @@ export function AppRoutes() {
           <PrivateRoute>
             <Home />
           </PrivateRoute>} />
-        <Route path='/userlist' element={<UserList />} />
+        <Route path='/users' element={<UserList />} />
+        <Route path='/users/create' element={<UserCreate />} />
         <Route path="*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
